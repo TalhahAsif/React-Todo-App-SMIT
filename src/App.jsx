@@ -28,7 +28,7 @@ function App() {
             />
             <button
               className="p-2 min-w-48 my-4 rounded-md bg-purple-600"
-              onClick={() => {
+              onClick={() => { 
                 addTodo([...todos, text]);
                 console.log(todos);
                 setText("")
