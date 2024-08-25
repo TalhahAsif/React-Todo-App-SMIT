@@ -5,6 +5,7 @@ import List from "./ListComp";
 function App() {
   let [text, setText] = useState("");
   let [todos, addTodo] = useState([]);
+  
 
   const addTodoEvent = () => {
     addTodo([
@@ -13,9 +14,14 @@ function App() {
         todo: text,
         id: Date.now(),
         completed: false,
+        time:{
+          hour: new Date().getHours() % 12,
+          minutes: new Date().getMinutes(),
+          amOrpm: new Date().gethours >= 12 ? "AM" : "PM"
+        }
+        
       },
     ]);
-    console.log(todos);
     setText("");
   };
 
