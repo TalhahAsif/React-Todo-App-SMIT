@@ -25,22 +25,22 @@ const List = ({ todo, addTodos }) => {
       return true;
     }
     if (filter == "completed" && data.completed) {
-      return true
+      return true;
     }
 
     if (filter == "Uncompleted" && !data.completed) {
-      return true
+      return true;
     }
   });
-
-  console.log(filteredTodo, "filterdtodo");
 
   return (
     <>
       <section className="flex gap-6 items-center justify-center my-10">
-        <Btn text="All" onClick={() => setfilter("all")} filter={filter} />
-        <Btn text="Completed" onClick={() => setfilter("completed")} />
-        <Btn text="Not Completed" onClick={() => setfilter("Uncompleted")} />
+        <Btn
+          text="All"
+          setfilter={setfilter}
+          filter={filter}
+        />
       </section>
       {!filteredTodo.length ? (
         <div>No todo available</div>
