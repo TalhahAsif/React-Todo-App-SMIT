@@ -14,6 +14,7 @@ const List = ({ todo, addTodos }) => {
   };
 
   const deleteTodo = (id) => {
+    console.log(id);
     const todoArray = [...todo];
     const remTodos = todoArray.filter((data) => data.id != id);
     console.log(remTodos);
@@ -35,54 +36,53 @@ const List = ({ todo, addTodos }) => {
 
   return (
     <>
-      <section className="flex gap-6 items-center justify-center my-10">
-        <Btn
-          text="All"
-          setfilter={setfilter}
-          filter={filter}
-        />
-      </section>
-      {!filteredTodo.length ? (
-        <div>No todo available</div>
-      ) : (
-        filteredTodo.map((data, index) => {
-          return (
-            <div key={index} className="flex flex-col">
-              <div className="bg-purple-500 p-4 rounded-md m-2 flex items-center">
-                <section className="flex justify-between items-center w-full">
-                  <div className="flex items-center w-full">
-                    <input
-                      type="checkbox"
-                      onChange={() => markAsdone(data.id)}
-                      className="mr-3 size-5"
-                    />
-                    <div className="flex items-center justify-between w-full">
-                      <p
-                        className={`text-lg font-bold ${
-                          data.completed
-                            ? "text-green-700 line-through"
-                            : "text-white"
-                        }`}
-                      >
-                        {data.todo}
-                      </p>
-                      <p className="text-sm mr-6">
-                        {data.time.hour}:{data.time.minutes}
-                        {data.time.amOrpm}
-                      </p>
-                    </div>
-                  </div>
+      <div className="flex flex-col justify-center items-center">
+        <section className="flex flex-wrap gap-6 items-center justify-center my-10">
+          <Btn text="All" setfilter={setfilter} filter={filter} />
+        </section>
+        {!filteredTodo.length ? (
+          <div>No Task available</div>
+        ) : (
+          filteredTodo.map((data, index) => {
+            return (
+              <div key={index} className="flex flex-col w-full">
+                <div className="bg-purple-500 p-4 rounded-md m-2 flex items-center">
+                  <section className="flex justify-between items-center w-full">
+                    <div className="flex items-center w-full">
+                      <input
 
-                  <i
-                    className="fa-solid fa-trash hover:bg-red-600"
-                    onClick={() => deleteTodo(data.id)}
-                  ></i>
-                </section>
+                        type="checkbox"
+                        onChange={() => markAsdone(data.id)}
+                        className="mr-3 size-5"
+                      />
+                      <div className="flex items-center justify-between w-full">
+                        <p
+                          className={`text-lg font-bold ${
+                            data.completed
+                              ? "text-green-700 line-through"
+                              : "text-white"
+                          }`}
+                        >
+                          {data.todo}
+                        </p>
+                        <p className="text-sm mr-6">
+                          {data.time.hour}:{data.time.minutes}
+                          {data.time.amOrpm}
+                        </p>
+                      </div>
+                    </div>
+
+                    <i
+                      className="fa-solid fa-trash hover:bg-red-600"
+                      onClick={() => deleteTodo(data.id)}
+                    ></i>
+                  </section>
+                </div>
               </div>
-            </div>
-          );
-        })
-      )}
+            );
+          })
+        )}
+      </div>
     </>
   );
 };

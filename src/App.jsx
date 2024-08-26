@@ -39,7 +39,7 @@ function App() {
               htmlFor="large-input"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              ADD TODO
+             Add your Task
             </label>
             <input
               value={text}
