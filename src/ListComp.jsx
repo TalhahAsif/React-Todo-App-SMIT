@@ -20,14 +20,6 @@ const List = ({ todo, addTodos }) => {
     addTodos(remTodos);
   };
 
-  const getAll = () => {
-    const todoArray = [...todo];
-    console.log(todo, "todoArray");
-    addTodos(todoArray);
-  };
-
-  // console.log(filter);
-
   const filteredTodo = todo.filter((data) => {
     if (filter == "all") {
       return true;
@@ -45,7 +37,7 @@ const List = ({ todo, addTodos }) => {
 
   return (
     <>
-      <section className="flex gap-6 items-center justify-center">
+      <section className="flex gap-6 items-center justify-center my-10">
         <Btn text="All" onClick={() => setfilter("all")} filter={filter} />
         <Btn text="Completed" onClick={() => setfilter("completed")} />
         <Btn text="Not Completed" onClick={() => setfilter("Uncompleted")} />
@@ -53,7 +45,7 @@ const List = ({ todo, addTodos }) => {
       {!filteredTodo.length ? (
         <div>No todo available</div>
       ) : (
-        todo.map((data, index) => {
+        filteredTodo.map((data, index) => {
           return (
             <div key={index} className="flex flex-col">
               <div className="bg-purple-500 p-4 rounded-md m-2 flex items-center">
